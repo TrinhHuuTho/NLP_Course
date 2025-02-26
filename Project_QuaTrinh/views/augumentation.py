@@ -30,8 +30,7 @@ def augmentation_view():
             elif method == "Dịch ngược":
                 result = augmenter.back_translation(text)
 
-            st.subheader("📌 Kết quả:")
-            st.text_area("Văn bản sau khi tăng cường:", value="\n".join(result), height=150)
+            st.text_area("📌 Kết quả:", value=result, height=150)
 
             # ✅ Sửa lỗi tải xuống bằng cách chuyển `list` thành `str`
             st.download_button("💾 Tải xuống", data="\n".join(result), file_name="augmented_text.txt")

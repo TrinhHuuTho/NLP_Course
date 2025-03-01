@@ -5,7 +5,6 @@ from selenium.webdriver.chrome.options import Options
 from webdriver_manager.chrome import ChromeDriverManager # type: ignore
 from bs4 import BeautifulSoup
 import pandas as pd
-import streamlit as st
 
 class DataDownloader:
     def __init__(self, url=None):
@@ -18,6 +17,8 @@ class DataDownloader:
         try:
             options = Options()
             options.headless = True  # Chạy trình duyệt ẩn (không hiển thị cửa sổ)
+            options.add_argument("--no-sandbox")  # Bắt buộc với một số môi trường
+            options.add_argument("--disable-dev-shm-usage")  # Giảm lỗi bộ nhớ
             options.add_argument("--disable-blink-features=AutomationControlled")  # Tránh bị phát hiện là bot
 
             # Khởi chạy ChromeDriver

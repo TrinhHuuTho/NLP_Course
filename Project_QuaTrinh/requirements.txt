@@ -11,3 +11,4 @@ webdriver_manager
 beautifulsoup4
 transformers
 nltk
+torch 

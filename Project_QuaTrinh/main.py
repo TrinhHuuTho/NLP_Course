@@ -4,6 +4,9 @@ from views.collection import scraper_view
 
 import streamlit as st
 
+import nltk
+nltk.data.path.append("./nltk_data")
+
 def main():
     choice = Menu()
     # Điều hướng đến từng view

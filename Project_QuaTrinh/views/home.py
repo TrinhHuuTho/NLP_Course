@@ -10,7 +10,8 @@ def Header():
         """,
         unsafe_allow_html=True
     )
-    st.image("./NLP_image.png", caption="🔍 Natural Language Processing", use_container_width=True)
+    st.image("static/NLP_image.png",
+              caption="🔍 Natural Language Processing", use_container_width=True)
 
 def Menu():
     st.sidebar.title("📌 Menu")

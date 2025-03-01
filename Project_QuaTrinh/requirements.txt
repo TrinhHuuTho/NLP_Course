@@ -7,6 +7,8 @@ matplotlib
 seaborn
 nlpaug
 transformers
+MarianMTModel 
+MarianTokenizer
 selenium
 webdriver_manager
 BeautifulSoup

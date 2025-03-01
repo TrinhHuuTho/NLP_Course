@@ -2,10 +2,13 @@ from views.home import Header, Menu, Body, Footer
 from views.augumentation import augmentation_view
 from views.collection import scraper_view
 
+import os
 import streamlit as st
-
 import nltk
-nltk.data.path.append("./nltk_data")
+nltk.download("averaged_perceptron_tagger")
+# Cố định đường dẫn tới nltk_data
+NLTK_DATA_PATH = os.path.abspath("./nltk_data")
+nltk.data.path.append(NLTK_DATA_PATH)
 
 def main():
     choice = Menu()

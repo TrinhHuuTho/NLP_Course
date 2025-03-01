@@ -1,5 +1,6 @@
 from views.home import Header, Menu, Body, Footer
 from views.augumentation import augmentation_view
+from views.collection import scraper_view
 
 import streamlit as st
 
@@ -15,7 +16,7 @@ def main():
         augmentation_view()
 
     elif choice == "📥 Thu thập dữ liệu":
-        st.text("Đang phát triển")
+        scraper_view()
 
     elif choice == "🔍 Tiền xử lý dữ liệu":
         st.text("Đang phát triển")

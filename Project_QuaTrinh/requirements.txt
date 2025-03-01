@@ -13,4 +13,3 @@ transformers
 nltk
 torch 
 sentencepiece
-os

@@ -10,7 +10,7 @@ def Header():
         """,
         unsafe_allow_html=True
     )
-    st.image("static/NLP_image.png",
+    st.image("https://byvn.net/aeff",
               caption="🔍 Natural Language Processing", use_container_width=True)
 
 def Menu():

@@ -4,7 +4,7 @@ from views.collection import scraper_view
 
 import streamlit as st
 import nltk
-nltk.download("averaged_perceptron_tagger")
+nltk.download('averaged_perceptron_tagger_eng')
 
 def main():
     choice = Menu()

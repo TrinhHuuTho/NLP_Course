@@ -6,8 +6,6 @@ scikit-learn
 matplotlib
 seaborn
 nlpaug
-MarianMTModel 
-MarianTokenizer
 selenium
 webdriver_manager
 BeautifulSoup

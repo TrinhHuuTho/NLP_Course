@@ -14,5 +14,4 @@ spellchecker==0.4
 streamlit==1.42.2
 transformers==4.48.0
 webdriver_manager==4.0.2
-indexer
-spellchecker 
+indexer==0.0.1

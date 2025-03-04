@@ -2,6 +2,7 @@ from views.home import Header, Menu, Body, Footer
 from views.augumentation import augmentation_view
 from views.collection import scraper_view
 from views.preprocessor import preprocessor_view
+from views.representation import representation_view
 
 import streamlit as st
 import nltk
@@ -24,15 +25,15 @@ def main():
     elif choice == "🔍 Tiền xử lý dữ liệu":
         return preprocessor_view()
 
-    elif choice == "📊 Trực quan hóa dữ liệu":
-        st.text("Đang phát triển")
+    elif choice == "🔢 Biểu diễn dữ liệu":
+        return representation_view()
 
     elif choice == "📞 Liên hệ":
-        st.text("Đang phát triển")
+        return Footer()
 
-    elif choice == "❌ Thoát":
-        st.info("Cảm ơn bạn đã dùng chương trình")
-        st.stop()
+    # elif choice == "❌ Thoát":
+    #     st.info("Cảm ơn bạn đã dùng chương trình")
+    #     st.stop()
 
 
 if __name__ == "__main__":

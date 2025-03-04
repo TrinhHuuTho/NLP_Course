@@ -1,6 +1,7 @@
 from views.home import Header, Menu, Body, Footer
 from views.augumentation import augmentation_view
 from views.collection import scraper_view
+from views.preprocessor import preprocessor_view
 
 import streamlit as st
 import nltk
@@ -15,13 +16,13 @@ def main():
         Footer()
 
     elif choice == "📝 Tăng cường dữ liệu":
-        augmentation_view()
+        return augmentation_view()
 
     elif choice == "📥 Thu thập dữ liệu":
-        scraper_view()
+        return scraper_view()
 
     elif choice == "🔍 Tiền xử lý dữ liệu":
-        st.text("Đang phát triển")
+        return preprocessor_view()
 
     elif choice == "📊 Trực quan hóa dữ liệu":
         st.text("Đang phát triển")

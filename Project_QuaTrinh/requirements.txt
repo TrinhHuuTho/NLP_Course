@@ -14,3 +14,4 @@ spellchecker
 streamlit
 transformers
 webdriver_manager
+indexer

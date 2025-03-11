@@ -22,13 +22,34 @@ def representation_view():
             text_data = uploaded_file.read().decode("utf-8").split("\n")
 
     # 📌 **Chọn phương pháp**
-    method = st.radio("Chọn phương pháp biểu diễn:", ("One-hot Encoding", "CountVectorizer"))
+    method = st.radio("Chọn phương pháp biểu diễn:", ("One-hot Encoding",
+                                                       "CountVectorizer",
+                                                         "Bag of N-grams (n=1,2)",
+                                                           "TF-IDF Vectorizer",
+                                                             "Word2Vec Embedding",
+                                                               "GloVe Embedding",
+                                                                 "FastText Embedding",
+                                                                   "ChatGPT Embedding",
+                                                                     "BERT Embedding",
+                                                                       "RoBERTa Embedding"))
 
     # ✅ **Nút xử lý**
     if st.button("🚀 Biểu diễn văn bản"):
         if text_data:
-            vectorizer = DataRepresentation(method="count" if method == "CountVectorizer" else "onehot")
+            vectorizer = DataRepresentation(method="count" if method == "CountVectorizer"
+                                                    else "onehot" if method == "One-hot Encoding"
+                                                    else "bagofngram" if method == "Bag of N-grams (n=1,2)"
+                                                    else "tfidf" if method == "TF-IDF Vectorizer"
+                                                    else "word2vec" if method == "Word2Vec Embedding"
+                                                    else "glove" if method == "GloVe Embedding"
+                                                    else "fasttext" if method == "FastText Embedding"
+                                                    else "chatgpt" if method == "ChatGPT Embedding"
+                                                    else "bert" if method == "BERT Embedding"
+                                                    else "roberta" if method == "RoBERTa Embedding"
+                                                    else "count")
             result = vectorizer.fit_transform(text_data)
+            if not isinstance(result, pd.DataFrame):
+                result = pd.DataFrame(result)
             
             if isinstance(result, pd.DataFrame):
                 st.subheader("📊 Kết quả Biểu Diễn Dữ Liệu")

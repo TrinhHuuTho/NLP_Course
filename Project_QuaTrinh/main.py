@@ -3,8 +3,8 @@ from views.augumentation import augmentation_view
 from views.collection import scraper_view
 from views.preprocessor import preprocessor_view
 from views.representation import representation_view
+from views.classification import classification_view
 
-import streamlit as st
 import nltk
 nltk.download('averaged_perceptron_tagger_eng')
 
@@ -27,6 +27,9 @@ def main():
 
     elif choice == "🔢 Biểu diễn dữ liệu":
         return representation_view()
+    
+    elif choice == "📚 Phân loại dữ liệu":
+        return classification_view()
 
     elif choice == "📞 Liên hệ":
         return Footer()

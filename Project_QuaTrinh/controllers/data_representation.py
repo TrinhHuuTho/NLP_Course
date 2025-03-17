@@ -1,9 +1,9 @@
+from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 import numpy as np
 import pandas as pd
-from sklearn.feature_extraction.text import CountVectorizer, TfidfVectorizer
 from gensim.models import Word2Vec, FastText
 import gensim.downloader as api
-import spacy
+from scipy.sparse import csr_matrix
 from transformers import BertTokenizer, BertModel, RobertaTokenizer, RobertaModel, GPT2Tokenizer, GPT2Model
 import torch
 
@@ -57,25 +57,30 @@ class DataRepresentation:
         """Bag of Words sử dụng CountVectorizer."""
         self.vectorizer = CountVectorizer(binary=False)
         transformed = self.vectorizer.fit_transform(texts)
-        return self._to_dataframe(transformed)
+        feature_names = self.vectorizer.get_feature_names_out()  # Lấy tên từ vựng
+        return self._to_dataframe(transformed, feature_names)
 
     def _onehot_encoding(self, texts):
         """One-hot encoding = CountVectorizer(binary=True)."""
         self.vectorizer = CountVectorizer(binary=True)
         transformed = self.vectorizer.fit_transform(texts)
-        return self._to_dataframe(transformed)
+        feature_names = self.vectorizer.get_feature_names_out()  # Lấy tên từ vựng
+        return self._to_dataframe(transformed, feature_names)
 
     def _bag_of_ngram(self, texts):
         """Bag of N-grams (n=1,2)."""
         self.vectorizer = CountVectorizer(ngram_range=(1, 2))
         transformed = self.vectorizer.fit_transform(texts)
-        return self._to_dataframe(transformed)
+        feature_names = self.vectorizer.get_feature_names_out()  # Lấy tên từ vựng
+        return self._to_dataframe(transformed, feature_names)
 
     def _tfidf_vectorizer(self, texts):
         """TF-IDF Vectorization."""
         self.vectorizer = TfidfVectorizer()
         transformed = self.vectorizer.fit_transform(texts)
-        return self._to_dataframe(transformed)
+        feature_names = self.vectorizer.get_feature_names_out()  # Lấy tên từ vựng
+        return self._to_dataframe(transformed, feature_names)
+
 
     # ========== Biểu diễn Word Embeddings ==========
     def _word2vec_embedding(self, texts):
@@ -84,13 +89,15 @@ class DataRepresentation:
         self.word2vec_model = Word2Vec(sentences=tokenized_texts, vector_size=100, window=5, min_count=1, workers=4)
         embeddings = [np.mean([self.word2vec_model.wv[word] for word in text if word in self.word2vec_model.wv]
                               or [np.zeros(100)], axis=0) for text in tokenized_texts]
-        return self._to_dataframe(np.array(embeddings))
+        feature_names = [f"feat_{i}" for i in range(len(embeddings[0]))]  # Tạo tên đặc trưng
+        return self._to_dataframe(np.array(embeddings), feature_names)
 
     def _glove_embedding(self, texts):
         """GloVe embedding dùng api."""
         self.nlp = api.load("glove-wiki-gigaword-100")
         embeddings = [np.mean([self.nlp.get_vector(word) for word in text.split() if word in self.nlp], axis=0) for text in texts]
-        return self._to_dataframe(np.array(embeddings))
+        feature_names = [f"feat_{i}" for i in range(len(embeddings[0]))]  # Tạo tên đặc trưng
+        return self._to_dataframe(np.array(embeddings), feature_names) 
 
     def _fasttext_embedding(self, texts):
         """FastText embedding."""
@@ -98,7 +105,8 @@ class DataRepresentation:
         self.fasttext_model = FastText(sentences=tokenized_texts, vector_size=100, window=5, min_count=1, workers=4)
         embeddings = [np.mean([self.fasttext_model.wv[word] for word in text if word in self.fasttext_model.wv]
                               or [np.zeros(100)], axis=0) for text in tokenized_texts]
-        return self._to_dataframe(np.array(embeddings))
+        feature_names = [f"feat_{i}" for i in range(len(embeddings[0]))]   # Tạo tên đặc trưng
+        return self._to_dataframe(np.array(embeddings), feature_names)
     
     
 
@@ -132,15 +140,20 @@ class DataRepresentation:
         with torch.no_grad():
             outputs = model(**tokens)
         embeddings = outputs.last_hidden_state.mean(dim=1).numpy()
-        return self._to_dataframe(embeddings)
+        feature_names = [f"feat_{i}" for i in range(embeddings.shape[1])] # Lặp qua các 
+        return self._to_dataframe(embeddings, feature_names)
     
 
     # ========== Chuyển đổi dữ liệu thành DataFrame ==========
-    def _to_dataframe(self, transformed):
-        """Chuyển ma trận thành DataFrame."""
-        if len(transformed.shape) == 1:
-            transformed = transformed.reshape(-1, 1)
-        if isinstance(transformed, np.ndarray):
-            return pd.DataFrame(transformed, columns=[f"Feature_{i+1}" for i in range(transformed.shape[1])])
-        else:
-            return pd.DataFrame(transformed.toarray(), columns=[f"Feature_{i+1}" for i in range(transformed.shape[1])])
+    def _to_dataframe(self, transformed, feature_names):
+            """Chuyển ma trận thành DataFrame với từ vựng làm tên cột."""
+            # feature_names = self.vectorizer.get_feature_names_out()  # Lấy tên từ vựng
+
+            if isinstance(transformed, np.ndarray):  # Nếu là numpy array
+                df = pd.DataFrame(transformed, columns=feature_names)
+            elif isinstance(transformed, csr_matrix):  # Nếu là sparse matrix
+                df = pd.DataFrame(transformed.toarray(), columns=feature_names)
+            else:
+                raise ValueError("❌ Dữ liệu không hợp lệ, chỉ hỗ trợ numpy array hoặc sparse matrix!")
+
+            return df  # Trả về DataFrame đúng định dạng

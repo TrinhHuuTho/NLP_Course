@@ -4,8 +4,18 @@ from controllers.data_augmentation import augmenter
 def augmentation_view():
     st.title("📝 Tăng cường dữ liệu văn bản")
 
-    # Nhập văn bản
-    text = st.text_area("Nhập văn bản cần tăng cường:")
+    # Lựa chọn cách nhập văn bản
+    option = st.radio("Chọn nguồn nhập dữ liệu:", ("Nhập văn bản", "Tải file văn bản"))
+
+    text = ""
+
+    if option == "Nhập văn bản":
+        text = st.text_area("Nhập văn bản của bạn tại đây:", height=200)
+
+    elif option == "Tải file văn bản":
+        uploaded_file = st.file_uploader("📂 Chọn file .txt", type="txt")
+        if uploaded_file is not None:
+            text = uploaded_file.read().decode("utf-8")
 
     # Chọn phương pháp tăng cường
     method = st.selectbox("Chọn phương pháp:", [

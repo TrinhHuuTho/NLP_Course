@@ -1,0 +1,97 @@
+import pandas as pd
+import numpy as np
+import streamlit as st
+from sklearn.feature_extraction.text import TfidfVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.linear_model import LogisticRegression
+from sklearn.svm import SVC
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+from datasets import load_dataset  # Hugging Face Datasets
+
+class TextClassifier:
+    def __init__(self, dataset_name, model_type):
+        """Khởi tạo bộ phân loại văn bản"""
+        self.dataset_name = dataset_name
+        self.model_type = model_type
+        self.vectorizer = TfidfVectorizer(max_features=5000)  # Chuyển đổi văn bản thành vector TF-IDF
+        self.model = None
+
+        # self.train_labels = None
+        # self.train_texts = None
+        # self.test_labels = None
+        # self.test_texts = None
+
+        self.text_column = None
+        self.label_column = None
+
+        self._load_dataset()
+    
+    def _load_dataset(self):
+        """Tải dataset từ Hugging Face"""
+        dataset_mapping = {
+            # "SST": "sst", # config mặc định không có column thuộc kiểu string
+            "IMDb Review": "imdb",
+            "Yelp Review": "yelp_review_full",
+            "Amazon Review": "amazon_polarity",
+            "TREC": "trec",
+            "Yahoo! Answer": "yahoo_answers_topics",
+            "AG's News": "ag_news",
+            "Sogou News": "sogou_news",
+            "DBPedia": "dbpedia_14"
+        }
+        
+        if self.dataset_name not in dataset_mapping:
+            raise ValueError("❌ Dataset không hợp lệ!")
+
+        dataset = load_dataset(dataset_mapping[self.dataset_name], trust_remote_code=True)
+
+        # Tìm cột chứa văn bản
+        sample = dataset["train"][0]
+        for col in sample.keys():
+            if isinstance(sample[col], str):  # Cột có kiểu dữ liệu là chuỗi
+                self.text_column = col
+                break
+        
+        # Tìm cột chứa nhãn
+        for col in sample.keys():
+            unique_values = set(dataset["train"][col])
+            if len(unique_values) < 20 and isinstance(list(unique_values)[0], (int, str)):  # Cột có ít giá trị duy nhất
+                self.label_column = col
+                break
+
+        if not self.text_column or not self.label_column:
+            raise ValueError("⚠️ Không xác định được cột văn bản hoặc nhãn!")
+
+        # Lấy dữ liệu
+        self.train_texts, self.train_labels = dataset["train"][self.text_column], dataset["train"][self.label_column]
+        self.test_texts, self.test_labels = dataset["test"][self.text_column], dataset["test"][self.label_column]
+
+    def train_model(self):
+        """Huấn luyện mô hình"""
+        X_train = self.vectorizer.fit_transform(self.train_texts)
+        X_test = self.vectorizer.transform(self.test_texts)
+
+        y_train = np.array(self.train_labels)
+        y_test = np.array(self.test_labels)
+
+        if self.model_type == "Naive Bayes":
+            self.model = MultinomialNB()
+        elif self.model_type == "Logistic Regression":
+            self.model = LogisticRegression(max_iter=200)
+        elif self.model_type == "SVM":
+            self.model = SVC(kernel='linear')
+        else:
+            raise ValueError("❌ Thuật toán không hợp lệ!")
+
+        self.model.fit(X_train, y_train)
+        y_pred = self.model.predict(X_test)
+        accuracy = accuracy_score(y_test, y_pred)
+
+        return accuracy
+
+    def predict(self, text):
+        """Dự đoán phân loại văn bản"""
+        X_text = self.vectorizer.transform([text])
+        prediction = self.model.predict(X_text)[0]
+        return prediction

@@ -1,5 +1,5 @@
 import streamlit as st
-from controllers.data_textPreprocessor import TextPreprocessor  # Import lớp tiền xử lý
+from controllers.data_preprocessing import TextPreprocessor  # Import lớp tiền xử lý
 import streamlit.components.v1 as components  # Import để hiển thị HTML
 
 def preprocessor_view():

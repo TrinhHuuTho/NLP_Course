@@ -28,7 +28,7 @@ def main():
     elif choice == "🔢 Biểu diễn dữ liệu":
         return representation_view()
     
-    elif choice == "📚 Phân loại dữ liệu":
+    elif choice == "📚 Phân loại văn bản":
         return classification_view()
 
     elif choice == "📞 Liên hệ":

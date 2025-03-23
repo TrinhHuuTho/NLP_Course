@@ -1,13 +1,16 @@
 import pandas as pd
 import numpy as np
-import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.linear_model import LogisticRegression
 from sklearn.svm import SVC
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.tree import DecisionTreeClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from datasets import load_dataset  # Hugging Face Datasets
+import time
+from sklearn.utils import shuffle # Đảo ngẫu nhiên dữ liệu
 
 class TextClassifier:
     def __init__(self, dataset_name, model_type):
@@ -67,28 +70,62 @@ class TextClassifier:
         self.train_texts, self.train_labels = dataset["train"][self.text_column], dataset["train"][self.label_column]
         self.test_texts, self.test_labels = dataset["test"][self.text_column], dataset["test"][self.label_column]
 
-    def train_model(self):
+    def train_model(self, progress_bar):
         """Huấn luyện mô hình"""
+        start_time = time.time()
+
+        # 1. Vector hóa dữ liệu
         X_train = self.vectorizer.fit_transform(self.train_texts)
         X_test = self.vectorizer.transform(self.test_texts)
 
         y_train = np.array(self.train_labels)
         y_test = np.array(self.test_labels)
 
-        if self.model_type == "Naive Bayes":
-            self.model = MultinomialNB()
-        elif self.model_type == "Logistic Regression":
-            self.model = LogisticRegression(max_iter=200)
-        elif self.model_type == "SVM":
-            self.model = SVC(kernel='linear')
-        else:
+        # 2️⃣ Chọn mô hình phù hợp
+        model_mapping = {
+            "Naive Bayes": MultinomialNB(),
+            "Logistic Regression": LogisticRegression(max_iter=200),
+            "SVM": SVC(kernel='linear'),
+            "K-Nearest Neighbors": KNeighborsClassifier(n_neighbors=5),
+            "Decision Tree": DecisionTreeClassifier()
+        }
+
+        if self.model_type not in model_mapping:
             raise ValueError("❌ Thuật toán không hợp lệ!")
 
-        self.model.fit(X_train, y_train)
+        self.model = model_mapping[self.model_type]
+
+        # 3️⃣ Chia dữ liệu thành batch nhỏ để cập nhật tiến trình
+        num_batches = 10  # Số batch (điều chỉnh để tối ưu tốc độ cập nhật)
+        batch_size = X_train.shape[0] // num_batches
+
+        X_train, y_train = shuffle(X_train, y_train, random_state=42)
+
+        # 4️⃣ Huấn luyện mô hình theo từng batch
+        for i in range(num_batches):
+            batch_start = i * batch_size
+            batch_end = (i + 1) * batch_size if (i + 1) * batch_size < X_train.shape[0] else X_train.shape[0]
+            
+            self.model.partial_fit(X_train[batch_start:batch_end], y_train[batch_start:batch_end], classes=np.unique(y_train))  
+            
+            if progress_bar:
+                progress_bar.progress((i + 1) / num_batches)  # Cập nhật tiến trình từng bước
+            time.sleep(0.2)  # Giả lập thời gian train
+
+        train_time = time.time() - start_time  # Đo thời gian train thực tế
+
+        # 5️⃣ Kiểm tra độ chính xác
         y_pred = self.model.predict(X_test)
         accuracy = accuracy_score(y_test, y_pred)
 
-        return accuracy
+        return accuracy, train_time  # Trả về độ chính xác + thời gian train thực tế
+
+    def simulate_training_step(self, progress_bar, train_time):
+        """Cập nhật progress bar theo thời gian train thực tế"""
+        step_duration = train_time / 100  # Chia nhỏ thời gian thực tế ra 100 bước
+        for i in range(1, 101):
+            time.sleep(step_duration)
+            progress_bar.progress(i / 100.0)  # Cập nhật progress bar trong view
 
     def predict(self, text):
         """Dự đoán phân loại văn bản"""

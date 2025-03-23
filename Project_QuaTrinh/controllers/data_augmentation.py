@@ -19,24 +19,24 @@ class DataAugmentation:
         
     def synonym_augmentation(self, text):
         """Thay thế từ đồng nghĩa"""
-        return self.synonym_aug.augment(text)
+        return self.synonym_aug.augment(text)[0]
 
     def swap_words(self, text):
         """Hoán đổi vị trí từ"""
-        return self.swap_aug.augment(text)
+        return self.swap_aug.augment(text)[0]
 
     def delete_words(self, text):
         """Xóa từ ngẫu nhiên"""
-        return self.delete_aug.augment(text)
+        return self.delete_aug.augment(text)[0]
 
     def insert_words(self, text):
         """Thêm từ ngẫu nhiên vào văn bản"""
-        return self.insert_aug.augment(text)
+        return self.insert_aug.augment(text)[0]
 
     def back_translation(self, text):
         """Dịch ngược bằng mô hình Helsinki-NLP"""
         if isinstance(text, str):  # Đảm bảo text là danh sách
-            text = [text]
+            text = [text][0]
 
         # Dịch từ Anh -> Đức
         tokens = self.tokenizer_en_de(text, return_tensors="pt", padding=True, truncation=True)

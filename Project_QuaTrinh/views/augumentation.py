@@ -44,8 +44,8 @@ def augmentation_view():
 
                 st.text_area("📌 Kết quả:", value=result, height=150)
 
-                # ✅ Sửa lỗi tải xuống bằng cách chuyển `list` thành `str`
-                st.download_button("💾 Tải xuống", data="\n".join(result), file_name="augmented_text.txt")
+                # ✅ Sửa lỗi tải xuống bằng cách đảm bảo `result` là chuỗi
+                st.download_button("💾 Tải xuống", data=result, file_name="augmented_text.txt")
             else:
                 st.warning("⚠️ Vui lòng nhập văn bản!")
     with tab2:

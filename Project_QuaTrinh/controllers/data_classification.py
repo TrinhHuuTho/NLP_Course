@@ -95,22 +95,11 @@ class TextClassifier:
 
         self.model = model_mapping[self.model_type]
 
-        # 3️⃣ Chia dữ liệu thành batch nhỏ để cập nhật tiến trình
-        num_batches = 10  # Số batch (điều chỉnh để tối ưu tốc độ cập nhật)
-        batch_size = X_train.shape[0] // num_batches
+        # 3️⃣ Huấn luyện mô hình trên toàn bộ dữ liệu
+        self.model.fit(X_train, y_train)
 
-        X_train, y_train = shuffle(X_train, y_train, random_state=42)
-
-        # 4️⃣ Huấn luyện mô hình theo từng batch
-        for i in range(num_batches):
-            batch_start = i * batch_size
-            batch_end = (i + 1) * batch_size if (i + 1) * batch_size < X_train.shape[0] else X_train.shape[0]
-            
-            self.model.partial_fit(X_train[batch_start:batch_end], y_train[batch_start:batch_end], classes=np.unique(y_train))  
-            
-            if progress_bar:
-                progress_bar.progress((i + 1) / num_batches)  # Cập nhật tiến trình từng bước
-            time.sleep(0.2)  # Giả lập thời gian train
+        if progress_bar:
+            progress_bar.progress(1.0)  # Cập nhật tiến trình hoàn thành
 
         train_time = time.time() - start_time  # Đo thời gian train thực tế
 

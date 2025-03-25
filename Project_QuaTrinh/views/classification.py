@@ -17,9 +17,16 @@ def classification_view():
         model_list = ["Naive Bayes", "Logistic Regression", "SVM", "K-Nearest Neighbors", "Decision Tree"]
         model_type = st.selectbox("🤖 Chọn Thuật toán Phân Loại", model_list)
 
+        # Nếu chọn KNN, cho phép chọn số lượng lớp (chỉ số lẻ)
+        if model_type == "K-Nearest Neighbors":
+            n_neighbors = st.slider("🔢 Chọn số lượng lớp (k - chỉ số lẻ)", min_value=1, max_value=20, value=5, step=2)
+
         # Nút train model
         if st.button("🚀 Train Model"):
-            classifier = TextClassifier(dataset_name, model_type)
+            if model_type == "K-Nearest Neighbors":
+                classifier = TextClassifier(dataset_name, model_type, n_neighbors)
+            else:
+                classifier = TextClassifier(dataset_name, model_type, None)
 
             # 1️⃣ Hiển thị thanh tiến trình
             progress_bar = st.progress(0)

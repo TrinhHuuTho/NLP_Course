@@ -13,10 +13,11 @@ import time
 from sklearn.utils import shuffle # Đảo ngẫu nhiên dữ liệu
 
 class TextClassifier:
-    def __init__(self, dataset_name, model_type):
+    def __init__(self, dataset_name, model_type, n_neighbors):
         """Khởi tạo bộ phân loại văn bản"""
         self.dataset_name = dataset_name
         self.model_type = model_type
+        self.n_neighbors = n_neighbors
         self.vectorizer = TfidfVectorizer(max_features=5000)  # Chuyển đổi văn bản thành vector TF-IDF
         self.model = None
 
@@ -86,7 +87,7 @@ class TextClassifier:
             "Naive Bayes": MultinomialNB(),
             "Logistic Regression": LogisticRegression(max_iter=200),
             "SVM": SVC(kernel='linear'),
-            "K-Nearest Neighbors": KNeighborsClassifier(n_neighbors=5),
+            "K-Nearest Neighbors": KNeighborsClassifier(n_neighbors=self.n_neighbors),
             "Decision Tree": DecisionTreeClassifier()
         }
 

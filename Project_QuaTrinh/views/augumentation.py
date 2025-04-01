@@ -60,4 +60,6 @@ def augmentation_view():
             ---
             """
         )
+        st.video("https://youtu.be/A4ZkI5JYRDA")
+        st.caption("🎥 Hướng dẫn sử dụng Tăng cường dữ liệu")
     

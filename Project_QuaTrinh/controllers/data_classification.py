@@ -10,7 +10,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 from datasets import load_dataset  # Hugging Face Datasets
 import time
+from sklearn.metrics import precision_score, recall_score, f1_score
 from sklearn.utils import shuffle # Đảo ngẫu nhiên dữ liệu
+import pickle  # Thư viện này để lưu model
 
 class TextClassifier:
     def __init__(self, dataset_name, model_type, n_neighbors):
@@ -106,7 +108,24 @@ class TextClassifier:
 
         # 5️⃣ Kiểm tra độ chính xác
         y_pred = self.model.predict(X_test)
+        # Tính toán accuracy, precision, recall, và f1-score
         accuracy = accuracy_score(y_test, y_pred)
+        precision = precision_score(y_test, y_pred, average='weighted')
+        recall = recall_score(y_test, y_pred, average='weighted')
+        f1 = f1_score(y_test, y_pred, average='weighted')
+
+        # Lưu các thông số vào model_data
+        model_data = {   
+            "train_time":train_time,
+            "accuracy": accuracy, 
+            "precision": precision,
+            "recall": recall,
+            "f1_score": f1
+        }
+
+        # 6️⃣ Lưu model đã train vào file
+        with open(f"pre-trained/{self.model_type}/{self.model_type}_{self.dataset_name}.pkl", "wb") as f:
+            pickle.dump((self.model, self.vectorizer, model_data), f)
 
         return accuracy, train_time  # Trả về độ chính xác + thời gian train thực tế
 
@@ -119,6 +138,13 @@ class TextClassifier:
 
     def predict(self, text):
         """Dự đoán phân loại văn bản"""
-        X_text = self.vectorizer.transform([text])
-        prediction = self.model.predict(X_text)[0]
-        return prediction
+        try:
+        # ✅ Tải model đã lưu
+            with open(f"pre-trained/{self.model_type}/{self.model_type}_{self.dataset_name}.pkl", "rb") as f:
+                self.model, self.vectorizer, self.model_data = pickle.load(f)
+
+            X_text = self.vectorizer.transform(text)
+            prediction = self.model.predict(X_text)
+            return prediction
+        except FileNotFoundError:
+            raise ValueError("⚠️ Model chưa được train! Vui lòng train trước khi dự đoán.")

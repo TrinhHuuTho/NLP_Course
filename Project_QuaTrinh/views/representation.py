@@ -76,3 +76,5 @@ def representation_view():
             ---
             """
           )
+        st.video("https://youtu.be/A4ZkI5JYRDA")
+        st.caption("🎥 Hướng dẫn sử dụng Biểu diễn dữ liệu")

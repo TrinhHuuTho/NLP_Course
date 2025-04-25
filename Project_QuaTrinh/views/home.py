@@ -38,7 +38,6 @@ def Menu():
         "🔍 Tiền xử lý dữ liệu",
         "🔢 Biểu diễn dữ liệu",
         "📚 Phân loại văn bản",
-        "🔮 Hệ thống gợi ý",
         "📞 Liên hệ"
     ]
     return st.sidebar.selectbox("🔽 Chọn chức năng", menu)

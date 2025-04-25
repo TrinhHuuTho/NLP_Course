@@ -31,9 +31,6 @@ def main():
     
     elif choice == "📚 Phân loại văn bản":
         return classification_view()
-
-    elif choice == "🔮 Hệ thống gợi ý":
-        return movie_recommendation_view()
     
     elif choice == "📞 Liên hệ":
         return Footer()

@@ -1,0 +1,15 @@
+# Python
+__pycache__/
+
+# IDE
+
+# Project specific
+chromedriver-win64
+chromedriver.exe
+scrape_pro.py
+
+# Environment
+.venv
+
+# Logs
+*.log 

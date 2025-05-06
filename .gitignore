@@ -1,0 +1,31 @@
+# Các file tài liệu cá nhân
+FireWorksPygame.py
+Project_QuaTrinh.rar
+TrinhHuuTho_22110238_tuan04.docx
+Xử lý ngôn ngữ tự nhiên.docx
+
+# Nội dung các buổi học
+B1
+B2
+B3
+B4
+B6
+B7
+B10
+
+# Các file tài liệu cá nhân
+TrinhHuuTho_22110238_tuan10.zip
+TrinhHuuTho_22110238_Project_QuaTrinh.zip
+
+# Project còn đang trong quá trình phát triển
+Chatbot_Tavus/
+
+# Môi Trường
+*.venv
+.cursor
+
+# Tài liệu bảo mật
+*.env
+
+# IDE
+*/__pycache__/

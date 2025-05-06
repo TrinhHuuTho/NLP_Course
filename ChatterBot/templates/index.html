@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vẹt Biết Tuốt - SmartParrot</title>
+    <link rel="stylesheet" type="text/css" href="/static/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  </head>
+  <body>
+    <div class="logo-container">
+      <img src="/static/parrot-logo.png" alt="Vẹt Biết Tuốt Logo" class="logo">
+    </div>
+    <h1>Vẹt Biết Tuốt</h1>
+    <h3>SmartParrot - Trò chuyện cùng AI</h3>
+    <div class="chat-container">
+      <div id="chatbox">
+        <p class="botText"><span>Xin chào! Mình là Vẹt Biết Tuốt. Ngày hôm nay của bạn thế nào?</span></p>
+      </div>
+      <div id="userInput">
+        <input id="textInput" type="text" name="msg" placeholder="Nhập tin nhắn của bạn...">
+        <input id="buttonInput" type="submit" value="Gửi">
+      </div>
+      <script>
+        function scrollToBottom() {
+          var chatbox = document.getElementById('chatbox');
+          chatbox.scrollTop = chatbox.scrollHeight;
+        }
+
+        function getBotResponse() {
+          var rawText = $("#textInput").val();
+          if (rawText.trim() === "") return;
+          
+          var userHtml = '<p class="userText"><span>' + rawText + '</span></p>';
+          $("#textInput").val("");
+          $("#chatbox").append(userHtml);
+          scrollToBottom();
+          
+          // Hiển thị "đang nhập..."
+          var typingHtml = '<p class="botText"><span>Đang nhập...</span></p>';
+          $("#chatbox").append(typingHtml);
+          scrollToBottom();
+          
+          $.get("/get", { msg: rawText }).done(function(data) {
+            // Xóa "đang nhập..."
+            $("#chatbox p:last-child").remove();
+            
+            var botHtml = '<p class="botText"><span>' + data + '</span></p>';
+            $("#chatbox").append(botHtml);
+            scrollToBottom();
+          });
+        }
+        $("#textInput").keypress(function(e) {
+            if(e.which == 13) {
+                getBotResponse();
+            }
+        });
+        $("#buttonInput").click(function() {
+          getBotResponse();
+        });
+
+        // Focus vào ô input khi trang được tải
+        $(document).ready(function() {
+          $("#textInput").focus();
+        });
+      </script>
+    </div>
+  </body>
+</html>

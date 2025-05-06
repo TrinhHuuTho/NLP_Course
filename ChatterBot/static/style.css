@@ -1,0 +1,160 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.logo-container {
+    text-align: center;
+    margin: 20px 0;
+    position: sticky;
+    top: 0;
+    background-color: #f0f2f5;
+    padding: 10px 0;
+    z-index: 100;
+    width: 100%;
+}
+
+.logo {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+h1 {
+    text-align: center;
+    color: #1a73e8;
+    margin: 10px 0;
+}
+
+h3 {
+    text-align: center;
+    color: #5f6368;
+    margin: 0 0 20px 0;
+}
+
+h3 a {
+    color: #3498db;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+h3 a:hover {
+    color: #2980b9;
+}
+
+.chat-container {
+    width: 90%;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 250px);
+    min-height: 400px;
+}
+
+#chatbox {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+    flex: 1;
+    overflow-y: auto;
+    min-height: 0;
+}
+
+.botText, .userText {
+    margin: 10px 0;
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 80%;
+    word-wrap: break-word;
+}
+
+.botText {
+    background-color: #e3f2fd;
+    margin-right: auto;
+}
+
+.userText {
+    background-color: #1a73e8;
+    color: white;
+    margin-left: auto;
+}
+
+.botText span, .userText span {
+    display: inline-block;
+}
+
+#userInput {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+#textInput {
+    flex: 1;
+    padding: 12px;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    font-size: 16px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#textInput:focus {
+    border-color: #1a73e8;
+}
+
+#buttonInput {
+    padding: 12px 25px;
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+#buttonInput:hover {
+    background-color: #1557b0;
+}
+
+/* Custom scrollbar */
+#chatbox::-webkit-scrollbar {
+    width: 8px;
+}
+
+#chatbox::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+#chatbox::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+#chatbox::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+#tidbit {
+    position:absolute;
+    bottom:0;
+    right:0;
+    width: 300px;
+}

@@ -1,8 +1,8 @@
 # Dữ liệu hội thoại cá nhân
 facebook-thotrinh56614-06_05_2025-tmcIsn9F/
 facebook-thotrinh56614-06_05_2025-tmcIsn9F.zip
-message_1.json
-db.sqlite3
+*.json
 
 # File training ChatterBot
 vietnamese_corpus/*.yml
+*.db

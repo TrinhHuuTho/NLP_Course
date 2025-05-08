@@ -31,16 +31,16 @@ Repository bao gồm các dự án sau:
 Mình rất hoan nghênh đóng góp từ cộng đồng. Nếu bạn muốn tham gia, hãy làm theo các bước sau:
 1. Fork repository này.
 2. Tạo một nhánh mới:
-        ```bash
+        ```
         git checkout -b feature/tinh-nang-moi
         ```
 3. Commit các thay đổi của bạn:
-        ```bash
-        git commit -m "Thêm tính năng mới"
+        ```
+        git commit -m "Thêm tính năng mới
         ```
 4. Tạo pull request để xem xét và hợp nhất.
 
 ## Liên hệ
-Nếu bạn có bất kỳ câu hỏi hoặc ý kiến đóng góp nào, vui lòng liên hệ qua email hoặc tạo issue trên GitHub.
+Nếu bạn có bất kỳ câu hỏi hoặc ý kiến đóng góp nào, vui lòng liên hệ qua [trinhuutho@gmail.com](trinhuutho@gmail.com) hoặc tạo issue trên GitHub.
 
-Hy vọng repository này sẽ là một nguồn tài liệu hữu ích cho những ai quan tâm đến NLP. Chúc các bạn học tốt!
+> Hy vọng repository này sẽ là một nguồn tài liệu hữu ích cho những ai quan tâm đến NLP. Chúc các bạn học tốt!

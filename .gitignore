@@ -28,4 +28,5 @@ Chatbot_Tavus/
 *.env
 
 # IDE
-*/__pycache__/
+*/__pycache__
+*.pyc

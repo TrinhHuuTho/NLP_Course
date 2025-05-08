@@ -4,30 +4,31 @@
 `NLP_Course` là một repository tổng hợp các dự án được thực hiện trong khuôn khổ môn học Xử lý Ngôn ngữ Tự nhiên (NLP). Mỗi dự án trong repository này sẽ tập trung vào một khía cạnh cụ thể của NLP, giúp người học có cái nhìn toàn diện và thực hành các kỹ thuật khác nhau trong lĩnh vực này.
 
 ## Các dự án
-Hiện tại, repository bao gồm các dự án sau:
+Repository bao gồm các dự án sau:
 
 ### 1. Project_QuaTrinh
 - **Mục tiêu**: Tổng hợp các kiến thức cơ bản và xây dựng một ứng dụng NLP đơn giản.
-- **Chi tiết**: 
-    - Sử dụng Python 3.10 và Streamlit để xây dựng giao diện.
-    - Tổ chức theo mô hình MVC (Model-View-Controller).
-- **Hướng dẫn cài đặt và chạy**:
-        ```bash
-        git clone https://github.com/TrinhHuuTho/NLP_Course.git
-        cd NLP_Course/Project_QuaTrinh
-        pip install -r requirements.txt
-        streamlit run app.py
-        ```
+- **Công nghệ chính**: Python 3.10, Streamlit
 
-### 2. Project_CuoiKy (Sắp ra mắt)
-- **Mục tiêu**: Xây dựng một ứng dụng NLP nâng cao, áp dụng các kỹ thuật tiên tiến.
-- **Chi tiết**: Dự án này sẽ được cập nhật trong tương lai.
+### 2. ChatterBot
+- **Mục tiêu**: Xây dựng một ứng dụng chatbot ngôn ngữ Việt, áp dụng các kỹ thuật NLP để cá nhân hóa chatbot (tương tự Simsimi).
+- **Công nghệ chính**: Chatterbot, Flask
 
-### 3. Các dự án nhỏ khác (Dự kiến)
-- Các dự án nhỏ sẽ được thêm vào để minh họa các khái niệm cụ thể trong NLP.
+### 3. RS (Recommendation System)
+- **Mục tiêu**: Xây dựng hệ thống gợi ý cơ bản trong NLP với (Collaborative, Content-base và Hybrid)
+- **Công nghệ chính**: Streamlit, Youtube API
+
+### 4. Tavus_video_chat
+- **Mục tiêu**: Xây dựng ứng dụng trò chuyện video 1-1 với AI sử dụng Tavus API.
+- **Công nghệ chính**: Flask, Tavus API
+
+### 5. Web Scraper
+- **Mục tiêu**: Thu thập và xử lý dữ liệu từ web cho các ứng dụng NLP.
+- **Công nghệ chính**: Streamlit, Gemini API
+
 
 ## Đóng góp
-Chúng tôi hoan nghênh mọi đóng góp từ cộng đồng. Nếu bạn muốn tham gia, hãy làm theo các bước sau:
+Mình rất hoan nghênh đóng góp từ cộng đồng. Nếu bạn muốn tham gia, hãy làm theo các bước sau:
 1. Fork repository này.
 2. Tạo một nhánh mới:
         ```bash
@@ -37,9 +38,9 @@ Chúng tôi hoan nghênh mọi đóng góp từ cộng đồng. Nếu bạn mu�
         ```bash
         git commit -m "Thêm tính năng mới"
         ```
-4. Tạo pull request để chúng tôi xem xét và hợp nhất.
+4. Tạo pull request để xem xét và hợp nhất.
 
 ## Liên hệ
 Nếu bạn có bất kỳ câu hỏi hoặc ý kiến đóng góp nào, vui lòng liên hệ qua email hoặc tạo issue trên GitHub.
 
-Chúng tôi hy vọng repository này sẽ là một nguồn tài liệu hữu ích cho những ai quan tâm đến NLP!
+Hy vọng repository này sẽ là một nguồn tài liệu hữu ích cho những ai quan tâm đến NLP. Chúc các bạn học tốt!

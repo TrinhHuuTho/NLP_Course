@@ -4,7 +4,6 @@ from views.collection import scraper_view
 from views.preprocessor import preprocessor_view
 from views.representation import representation_view
 from views.classification import classification_view
-from views.movie_recommendation import movie_recommendation_view
 
 import nltk
 nltk.download('averaged_perceptron_tagger_eng')

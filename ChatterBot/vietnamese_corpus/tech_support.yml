@@ -1,0 +1,32 @@
+categories:
+- Support
+conversations:
+- - Máy tính của tui tự nhiên chậm kinh khủng, làm sao đây?
+  - Ồ, máy chậm là "bệnh" phổ biến mà! Trước tiên, bạn thử kiểm tra xem có chương trình nào đang ngốn RAM không, mở Task Manager lên xem nhé. Nếu vẫn chậm, tui gợi ý dọn dẹp ổ cứng hoặc quét virus thử.
+
+- - Tui không kết nối được Wi-Fi, giúp tui với!
+  - Wi-Fi "dở chứng" hả? Thử reset router bằng cách tắt đi, đợi 10 giây rồi bật lại. Nếu vẫn không được, kiểm tra xem máy có nhận diện mạng không hay là quên mật khẩu rồi nha!
+
+- - Làm sao để cài phần mềm mới trên máy tính?
+  - Cài phần mềm thì dễ thôi! Tải file cài đặt từ trang chính thức, chạy file đó, rồi làm theo hướng dẫn. Nhớ kiểm tra xem máy có đủ dung lượng và đáp ứng yêu cầu hệ thống không nhé.
+
+- - Tui lỡ xóa file quan trọng, có cách nào lấy lại không?
+  - Ui, xóa nhầm là "drama" lớn! Đầu tiên, kiểm tra thùng rác (Recycle Bin) xem file còn đó không. Nếu không, thử dùng phần mềm khôi phục như Recuva, nhưng đừng ghi thêm dữ liệu lên ổ để tránh mất vĩnh viễn.
+
+- - Màn hình máy tính bị xanh, tui phải làm gì?
+  - Màn hình xanh đáng sợ thật! Thử khởi động lại máy xem có hết không. Nếu vẫn bị, có thể là lỗi driver hoặc phần cứng. Bạn thử vào Safe Mode để kiểm tra hoặc cập nhật driver card đồ họa nhé.
+
+- - Tui muốn sao lưu dữ liệu, làm sao cho an toàn?
+  - Sao lưu là ý hay! Bạn có thể dùng ổ cứng ngoài hoặc dịch vụ đám mây như Google Drive, Dropbox. Nhớ đặt lịch sao lưu tự động để không phải lo quên.
+
+- - Phần mềm tui đang dùng cứ bị crash, sao vậy?
+  - Crash liên tục thì phiền thật! Thử cập nhật phần mềm lên phiên bản mới nhất, hoặc cài lại xem sao. Nếu vẫn không ổn, có thể máy bạn thiếu cấu hình hoặc có xung đột phần mềm đó.
+
+- - Làm sao để tăng tốc máy tính mà không tốn tiền?
+  - Haha, muốn máy nhanh mà ví vẫn "an toàn"? Dọn dẹp file rác bằng CCleaner, tắt bớt chương trình khởi động cùng máy, và defrag ổ cứng nếu dùng HDD. Đơn giản mà hiệu quả!
+
+- - Tui không mở được file PDF, có cách nào không?
+  - File PDF "cứng đầu" hả? Thử cài Adobe Acrobat Reader hoặc dùng trình duyệt như Chrome để mở. Nếu file bị lỗi, có thể cần tải lại hoặc sửa bằng công cụ online.
+
+- - Máy tui bị virus, làm sao để xử lý?
+  - Virus thì phải "xử đẹp"! Cài phần mềm diệt virus như Kaspersky hoặc Malwarebytes, quét toàn bộ máy, và xóa các file đáng ngờ. Nhớ không click link lạ nữa nha!

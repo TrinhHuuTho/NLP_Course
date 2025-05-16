@@ -7,5 +7,5 @@ lxml
 html5lib
 pandas==2.2.1
 python-dotenv==1.0.1
-requests==2.31.0
+requests
 ratelimit==2.2.1

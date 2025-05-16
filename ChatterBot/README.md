@@ -4,7 +4,7 @@ Một chatbot tiếng Việt được xây dựng bằng Python, sử dụng Cha
 
 ## Demo sản phẩm
 
-*Đang cập nhật ...*
+[YouTube Demo](https://www.youtube.com/watch?v=Jx80Ta9hPYs)
 
 ## Tính năng
 

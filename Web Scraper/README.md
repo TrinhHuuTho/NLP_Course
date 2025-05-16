@@ -3,7 +3,7 @@
 Một ứng dụng web scraper thông minh sử dụng Google Gemini API để trích xuất dữ liệu có cấu trúc từ các trang web. Ứng dụng này có thể phân tích nội dung HTML và chuyển đổi thành định dạng CSV dựa trên yêu cầu của người dùng.
 
 ## Demo sản phẩm
-- [YouTube Playlist Demo](https://youtube.com/playlist?list=PLTLFf7oAFMDWfZdUEbh4YydTBObRMuIKI&si=UjXwpBf0DYqjUO3u)
+- [YouTube Demo](https://www.youtube.com/watch?v=tBxsD9z0wAA)
 
 ## Tính năng
 

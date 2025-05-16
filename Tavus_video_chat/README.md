@@ -3,7 +3,7 @@
 Dự án này là một ứng dụng chat video sử dụng Tavus API để tạo và quản lý các cuộc trò chuyện video với AI.
 
 ## Demo sản phẩm
-- [YouTube Playlist Demo](https://youtube.com/playlist?list=PLTLFf7oAFMDWfZdUEbh4YydTBObRMuIKI&si=UjXwpBf0DYqjUO3u)
+- [YouTube Demo](https://www.youtube.com/watch?v=slmWqineseI)
 
 ## Tính năng
 

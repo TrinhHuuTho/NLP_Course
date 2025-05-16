@@ -3,7 +3,7 @@
 Hệ thống gợi ý phim sử dụng 3 phương pháp: Collaborative Filtering, Content-based Filtering và Hybrid Filtering.
 
 ## Demo sản phẩm
-- [YouTube Playlist Demo](https://youtube.com/playlist?list=PLTLFf7oAFMDWfZdUEbh4YydTBObRMuIKI&si=UjXwpBf0DYqjUO3u)
+- [YouTube Demo](https://youtu.be/kkUBU4Eno4s?si=eNp9vbr2qtWdgUGI)
 
 ## Cấu trúc Project
 ```

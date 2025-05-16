@@ -4,5 +4,5 @@ facebook-thotrinh56614-06_05_2025-tmcIsn9F.zip
 *.json
 
 # File training ChatterBot
-vietnamese_corpus/*.yml
+/vietnamese_corpus/conversations.yml
 *.db

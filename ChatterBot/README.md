@@ -2,6 +2,10 @@
 
 Một chatbot tiếng Việt được xây dựng bằng Python, sử dụng ChatterBot và Flask. Chatbot này có khả năng học hỏi từ các cuộc hội thoại Facebook và tương tác với người dùng qua giao diện web.
 
+## Demo sản phẩm
+
+*Đang cập nhật ...*
+
 ## Tính năng
 
 - Xử lý và học hỏi từ dữ liệu tin nhắn Facebook
@@ -16,32 +20,33 @@ Một chatbot tiếng Việt được xây dựng bằng Python, sử dụng Cha
 - pip (Python package manager)
 - Các thư viện Python (được liệt kê trong requirements.txt)
 
-## Cài đặt
+## Cài đặt & Khởi động nhanh
 
 1. Clone repository:
-```bash
-git clone [URL repository]
-cd [tên thư mục]
-```
-
+   ```bash
+   git clone https://github.com/TrinhHuuTho/NLP_Course
+   cd ChatterBot
+   ```
 2. Tạo môi trường ảo (khuyến nghị):
-```bash
-python -m venv venv
-source venv/bin/activate  # Linux/Mac
-venv\Scripts\activate     # Windows
-```
-
+   ```bash
+   python -m venv .venv
+   # Kích hoạt môi trường ảo
+   # Trên Linux/Mac
+   source .venv/bin/activate
+   # Trên Windows
+   .venv\Scripts\activate
+   ```
 3. Cài đặt các thư viện cần thiết:
-```bash
-pip install -r requirements.txt
-```
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 ## Cấu trúc project
 
 ```
-.
+.  # Thư mục ChatterBot
 ├── app.py                 # File chính của ứng dụng Flask
-├── process_messages.py    # Script xử lý tin nhắn Facebook
+├── process_messages.py    # Script xử lý dữ liệu tin nhắn Facebook
 ├── requirements.txt       # Danh sách các thư viện cần thiết
 ├── templates/            # Thư mục chứa các file HTML
 │   └── index.html        # Giao diện web
@@ -53,22 +58,22 @@ pip install -r requirements.txt
 ## Cách sử dụng
 
 1. Xử lý dữ liệu tin nhắn Facebook:
-```bash
-python process_messages.py
-```
-Script này sẽ:
-- Đọc các file JSON chứa tin nhắn Facebook
-- Xử lý và làm sạch dữ liệu
-- Tạo file conversations.yml cho việc training
+   ```bash
+   python process_messages.py
+   ```
+   Script này sẽ:
+   - Đọc các file JSON chứa tin nhắn Facebook
+   - Xử lý và làm sạch dữ liệu
+   - Tạo file conversations.yml cho việc training
 
 2. Chạy ứng dụng:
-```bash
-python app.py
-```
-Ứng dụng sẽ:
-- Train chatbot với dữ liệu đã xử lý
-- Khởi động server web
-- Truy cập http://localhost:5000 để sử dụng chatbot
+   ```bash
+   python app.py
+   ```
+   Ứng dụng sẽ:
+   - Train chatbot với dữ liệu đã xử lý
+   - Khởi động server web
+   - Truy cập http://localhost:5000 để sử dụng chatbot
 
 ## Xử lý dữ liệu
 
@@ -98,10 +103,11 @@ Project này được phát hành dưới giấy phép MIT. Xem file LICENSE đ�
 
 ## Tác giả
 
-[Thêm thông tin về tác giả]
+- **Tên:** Trịnh Hửu Thọ
+- **Email:** trinhuutho@gmail.com
+- **GitHub:** [https://github.com/TrinhHuuTho](https://github.com/TrinhHuuTho)
 
 ## Cảm ơn
 
 - ChatterBot team cho thư viện tuyệt vời
 - Cộng đồng Python và Flask
-- Tất cả những người đã đóng góp cho project 

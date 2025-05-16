@@ -1,7 +1,25 @@
 # NLP_Course - Tổng hợp các dự án môn học Xử lý Ngôn ngữ Tự nhiên
 
+## Demo sản phẩm
+- [YouTube Playlist Demo](https://youtube.com/playlist?list=PLTLFf7oAFMDWfZdUEbh4YydTBObRMuIKI&si=UjXwpBf0DYqjUO3u)
+
 ## Giới thiệu
 `NLP_Course` là một repository tổng hợp các dự án được thực hiện trong khuôn khổ môn học Xử lý Ngôn ngữ Tự nhiên (NLP). Mỗi dự án trong repository này sẽ tập trung vào một khía cạnh cụ thể của NLP, giúp người học có cái nhìn toàn diện và thực hành các kỹ thuật khác nhau trong lĩnh vực này.
+
+## Cài đặt & Hướng dẫn sử dụng
+
+1. Clone repository:
+   ```bash
+   git clone https://github.com/TrinhHuuTho/NLP_Course.git
+   ```
+2. Cài đặt và chạy từng project:
+   - Xem hướng dẫn chi tiết trong từng thư mục project con (Project_QuaTrinh, ChatterBot, RS, Tavus_video_chat, Web Scraper)
+   - Ví dụ chạy Project_QuaTrinh:
+     ```bash
+     cd Project_QuaTrinh
+     pip install -r requirements.txt
+     streamlit run main.py
+     ```
 
 ## Các dự án
 Repository bao gồm các dự án sau:
@@ -26,21 +44,20 @@ Repository bao gồm các dự án sau:
 - **Mục tiêu**: Thu thập và xử lý dữ liệu từ web cho các ứng dụng NLP.
 - **Công nghệ chính**: Streamlit, Gemini API
 
-
 ## Đóng góp
 Mình rất hoan nghênh đóng góp từ cộng đồng. Nếu bạn muốn tham gia, hãy làm theo các bước sau:
 1. Fork repository này.
 2. Tạo một nhánh mới:
-        ```
-        git checkout -b feature/tinh-nang-moi
-        ```
+   ```
+   git checkout -b feature/tinh-nang-moi
+   ```
 3. Commit các thay đổi của bạn:
-        ```
-        git commit -m "Thêm tính năng mới
-        ```
+   ```
+   git commit -m "Thêm tính năng mới"
+   ```
 4. Tạo pull request để xem xét và hợp nhất.
 
 ## Liên hệ
-Nếu bạn có bất kỳ câu hỏi hoặc ý kiến đóng góp nào, vui lòng liên hệ qua [trinhuutho@gmail.com](trinhuutho@gmail.com) hoặc tạo issue trên GitHub.
+Nếu bạn có bất kỳ câu hỏi hoặc ý kiến đóng góp nào, vui lòng liên hệ qua [trinhuutho@gmail.com](mailto:trinhuutho@gmail.com) hoặc tạo issue trên GitHub.
 
 > Hy vọng repository này sẽ là một nguồn tài liệu hữu ích cho những ai quan tâm đến NLP. Chúc các bạn học tốt!

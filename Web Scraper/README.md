@@ -2,6 +2,9 @@
 
 Một ứng dụng web scraper thông minh sử dụng Google Gemini API để trích xuất dữ liệu có cấu trúc từ các trang web. Ứng dụng này có thể phân tích nội dung HTML và chuyển đổi thành định dạng CSV dựa trên yêu cầu của người dùng.
 
+## Demo sản phẩm
+- [YouTube Playlist Demo](https://youtube.com/playlist?list=PLTLFf7oAFMDWfZdUEbh4YydTBObRMuIKI&si=UjXwpBf0DYqjUO3u)
+
 ## Tính năng
 
 - 🌐 Scrape dữ liệu từ bất kỳ trang web nào
@@ -14,45 +17,37 @@ Một ứng dụng web scraper thông minh sử dụng Google Gemini API để t
 ## Cài đặt
 
 1. Clone repository:
-```bash
-git clone <repository-url>
-cd web-scraper
-```
-
-2. Tạo và kích hoạt môi trường ảo:
-```bash
-python -m venv venv
-# Windows
-venv\Scripts\activate
-# Linux/Mac
-source venv/bin/activate
-```
-
+   ```bash
+   git clone https://github.com/TrinhHuuTho/NLP_Course
+   cd Web Scraper
+   ```
+2. (Khuyến nghị) Tạo và kích hoạt môi trường ảo:
+   ```bash
+   python -m venv .venv
+   # Windows
+   .venv\Scripts\activate
+   # Linux/Mac
+   source .venv/bin/activate
+   ```
 3. Cài đặt các thư viện phụ thuộc:
-```bash
-pip install -r requirements.txt
-```
-
+   ```bash
+   pip install -r requirements.txt
+   ```
 4. Tạo file `.env` và thêm API key của Google Gemini:
-```
-GOOGLE_API_KEY=your_api_key_here
-```
+   ```env
+   GOOGLE_API_KEY=your_api_key_here
+   ```
 
 ## Sử dụng
 
 1. Khởi động ứng dụng:
-```bash
-streamlit run main.py
-```
-
+   ```bash
+   streamlit run main.py
+   ```
 2. Truy cập ứng dụng qua trình duyệt web (mặc định: http://localhost:8501)
-
 3. Nhập URL của trang web cần scrape
-
 4. Mô tả dữ liệu bạn muốn trích xuất (ví dụ: "danh sách phim với tên, rating và số lượng đánh giá")
-
 5. Nhấn "Extract Data" và đợi kết quả
-
 6. Tải xuống dữ liệu dưới dạng file CSV
 
 ## Cấu trúc Project
@@ -102,4 +97,9 @@ Mọi đóng góp đều được hoan nghênh! Vui lòng:
 
 ## Liên hệ
 
-Nếu bạn có bất kỳ câu hỏi hoặc góp ý nào, vui lòng tạo issue trong repository. 
+- **Tên:** Trịnh Hữu Thọ
+- **Email:** trinhuutho@gmail.com
+- **GitHub:** [https://github.com/TrinhHuuTho](https://github.com/TrinhHuuTho)
+
+## Cảm ơn
+- @techwithtim đã cho video hướng dẫn và gợi ý phát triển dự án này
